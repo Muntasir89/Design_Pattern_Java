@@ -61,4 +61,4 @@ Why used-- </br>
 **_Structural design pattern is a blueprint of how different objects and classes are combined together to form a bigger structure for achieving multiple goals altogether. The patterns in structural designs show how unique pieces of a system can be combined together in an extensible and flexible manner._**
 ## Bridge
 According to the definition of **Gang of Four** - _Decouple an abstraction from its implementation so that the two can vary independently._
-![image](https://user-images.githubusercontent.com/78687005/198269742-45fc2927-3efc-4c2f-8df1-5f2b6da75bc4.png
+![image](https://user-images.githubusercontent.com/78687005/198269742-45fc2927-3efc-4c2f-8df1-5f2b6da75bc4.png)
