@@ -62,3 +62,5 @@ Why used-- </br>
 ## Bridge
 According to the definition of **Gang of Four** - _Decouple an abstraction from its implementation so that the two can vary independently._
 ![image](https://user-images.githubusercontent.com/78687005/198269742-45fc2927-3efc-4c2f-8df1-5f2b6da75bc4.png)
+### Output
+![Output](https://user-images.githubusercontent.com/78687005/198846146-3741751d-a0e4-4edf-b757-7188344b5c21.JPG)
