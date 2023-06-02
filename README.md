@@ -64,7 +64,7 @@ According to the definition of **Gang of Four** - _Decouple an abstraction from 
 ![image](https://user-images.githubusercontent.com/78687005/198269742-45fc2927-3efc-4c2f-8df1-5f2b6da75bc4.png)
 ### Output
 ![Output](https://user-images.githubusercontent.com/78687005/198846146-3741751d-a0e4-4edf-b757-7188344b5c21.JPG)
-## Facade Design Pattern
+## Facade
 Simply put, a facade encapsulates a complex subsystem behind a simple interface. It hides much of the complexity and makes the subsystem easy to use.</br>
 Besides a much simpler interface, there's one more benefit of using this design pattern. It decouples a client implementation from the complex subsystem.
 </br>It has three part-
@@ -142,3 +142,103 @@ Projector turned off
 - Encapsulation
 - Improved Maintainability
 - Code Reusability
+## Adapter
+When we need to connect to two interfaces that are not compatible to each other, we can use Adpter Design Pattern. This situation arises when a legacy code has to be integrated with new code. Let's dive into example...
+</br>***Student.java***
+```java
+public interface Student {
+    public String getName();
+    public String getSurName();
+    public String getEmail();
+}
+```
+This interface is implemented by **collegeStudent*** class.</br>
+***CollegeStudent.java***
+```java
+public class CollegeStudent implements Student{
+    String name;
+    String SurName;
+    String email;
+
+    public CollegeStudent(String name, String surname, String email){
+        this.name = name;
+        this.SurName = surname;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getSurName() {
+        return SurName;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+}
+```
+Again, we have another class called **SchoolStudent** which does not implement **Student** interface.
+</br>***SchoolStudent***
+```java
+public class SchoolStudent{
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
+
+    SchoolStudent(String firstName, String lastName, String emailAddress){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+    }
+    public String getFirstName(){
+        return firstName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public String getEmailAddress(){
+        return emailAddress;
+    }
+}
+```
+In the **StudentClient** class we are adding Student class that is adding **CollegeStudent** as it is implementing **Student** but **SchoolStudent** not implementing it. So we cannot add it **students** lists. So, we need a an adapter that will bind the **SchoolStudent** class info to the adapter which will again implement the **Student** interface. So, now can add it to **students** list.
+</br>***SchoolStudentAdapter.java***
+```java
+public class SchoolStudentAdapter implements Student{
+    private SchoolStudent schoolStudent;
+    public SchoolStudentAdapter(SchoolStudent schoolStudent){
+        this.schoolStudent = schoolStudent;
+    }
+    @Override
+    public String getName() {
+        return this.schoolStudent.getFirstName();
+    }
+    @Override
+    public String getSurName() {
+        return this.schoolStudent.getLastName();
+    }
+    @Override
+    public String getEmail() {
+        return this.schoolStudent.getEmailAddress();
+    }   
+}
+```
+***StudentClient.java***
+```java
+public class StudentClient {
+    public List<Student> getStudentList(){
+        List<Student> students = new ArrayList<>();
+        SchoolStudent schoolStudent = new SchoolStudent("x", "y", "z");
+        CollegeStudent collegeStudent = new CollegeStudent("x", "y", "z");
+
+        students.add(collegeStudent);
+        students.add(new SchoolStudentAdapter(schoolStudent));
+
+        return students;
+    }
+}
+```
