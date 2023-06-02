@@ -64,3 +64,81 @@ According to the definition of **Gang of Four** - _Decouple an abstraction from 
 ![image](https://user-images.githubusercontent.com/78687005/198269742-45fc2927-3efc-4c2f-8df1-5f2b6da75bc4.png)
 ### Output
 ![Output](https://user-images.githubusercontent.com/78687005/198846146-3741751d-a0e4-4edf-b757-7188344b5c21.JPG)
+## Facade Design Pattern
+Simply put, a facade encapsulates a complex subsystem behind a simple interface. It hides much of the complexity and makes the subsystem easy to use.</br>
+Besides a much simpler interface, there's one more benefit of using this design pattern. It decouples a client implementation from the complex subsystem.
+</br>It has three part-
+1) **Complex Subsystem**
+2) **Facade**
+3) **Client Code**
+```java
+// Facade
+class HomeTheaterFacade {
+    private Amplifier amplifier;
+    private DvdPlayer dvdPlayer;
+    private Projector projector;
+
+    public HomeTheaterFacade() {
+        this.amplifier = new Amplifier();
+        this.dvdPlayer = new DvdPlayer();
+        this.projector = new Projector();
+    }
+
+    public void watchMovie(String movie) {
+        System.out.println("Get ready to watch a movie...");
+        amplifier.on();
+        amplifier.setVolume(10);
+
+        dvdPlayer.on();
+        dvdPlayer.play(movie);
+
+        projector.on();
+        projector.setInput(dvdPlayer);
+    }
+
+    public void endMovie() {
+        System.out.println("Shutting down the home theater...");
+        amplifier.off();
+        dvdPlayer.stop();
+        dvdPlayer.off();
+        projector.off();
+    }
+}
+```
+We've hid all the complexity in two methods: ***watchMovie()*** and ***endMovie()***.</br>
+Now the client code are:
+```java
+// Client Code
+public class Main {
+    public static void main(String[] args) {
+        HomeTheaterFacade homeTheater = new HomeTheaterFacade();
+        // Start watching a movie
+        homeTheater.watchMovie("The Avengers");
+        System.out.println("\n");
+        // End the movie session
+        homeTheater.endMovie();
+    }
+}
+```
+Output:
+```
+Get ready to watch a movie...
+Amplifier turned on
+Setting amplifier volume to 10
+DVD player turned on
+Playing movie: The Avengers
+Projector turned on
+Setting input to DVD player
+
+Shutting down the home theater...
+Amplifier turned off
+Movie stopped
+DVD player turned off
+Projector turned off
+```
+### Benefits of Facade 
+- Simplified Interface
+- Decoupling
+- Encapsulation
+- Improved Maintainability
+- Code Reusability
