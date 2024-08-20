@@ -1,5 +1,5 @@
 # Design-Pattern
-This project contains some design pattern which will be useful for android developers as it has advantages such as reusability, mutability, transparency.
+This project contains some design pattern which will be useful for android developers, Java Developer as it has advantages such as reusability, mutability, transparency.
 # Creational Design Pattern
 **_Creational design patterns are concerned with the way of creating objects. These design patterns are used when a decision must be made at the time of instantiation of a class._**
 ## Singleton Design Pattern
@@ -32,7 +32,7 @@ In this instantiation, the Singleton classes object is only created when user ne
 Why used--  </br>
 &emsp;1) It is used when we have too many arguments to send in constructor & it's hard to maintain the order
 </br>&emsp;2) When we don't want to send all parameters in object initialization (Generally we send optional parameters as NULL)
-</br>It has a static nested class which contains all arguments of outer class and named using nameing convention 'ClassnameBuilder'. This class has a build method that will return the final Object.
+</br>It has a static nested class which contains all arguments of outer class and named using nameing convention 'ClassaNmeBuilder'. This class has a build method that will return the final Object.
 
 ## Factory
 Why used-- </br>
