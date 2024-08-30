@@ -299,3 +299,11 @@ public class Main {
     }
 }
 ```
+##Composite
+The Composite Design Pattern is a structural design pattern to compose objects into tree structures to represent part-whole hierarchies. This pattern allows you to treat individual objects and compositions of objects uniformly.<br>
+*Component:* This is the base interface or abstract class for all objects in the composition. It declares the common operations that can be performed on both simple and complex objects. <br>
+*Leaf:* A Leaf is a basic element in the composition that does not have any children. It implements the Component interface, performing the operations defined in the Component.<br>
+*Composite:* This is a complex component that may have children. A Composite implements the Component interface and is capable of holding other components (either Leafs or other Composites). It delegates the operations to its children.<br>
+*Client:* The client interacts with the objects in the composition through the Component interface. It treats all objects (both simple and composite) uniformly.<br>
+_If leaf node performs any operation then the same operation should be performed on composite node._
+![Composite Design Pattern](https://github.com/user-attachments/assets/144db4f0-e24b-4c82-ad9a-70625458f853)
